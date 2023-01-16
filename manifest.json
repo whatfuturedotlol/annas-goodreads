@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "Anna's Archive + goodreads",
+  "version": "0.1.0",
+  "description": "Allows for quick searching of goodread books in Anna's Archive",
+
+  "icons": {
+    "16": "annas-archive-favicon.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.goodreads.com/*"],
+      "js": ["annas_goodreads.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    "annas-archive-favicon.png"
+  ]
+}
