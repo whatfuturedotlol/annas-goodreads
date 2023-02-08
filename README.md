@@ -6,3 +6,5 @@ Firefox addon that injects links on goodread pages, that link to searches on [An
 - [ ] identify other places where links could be shown
 - [ ] find other places where links shouldnt be injected (`DONT_MATCH`)
 - [ ] remove the `(Hardback)`, `(Paperback)`, etc. extensions for some books in the search query
+- [ ] replace logo with higher quality one
+- [ ] increase margin between text and logo
