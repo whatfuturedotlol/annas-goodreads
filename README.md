@@ -8,3 +8,6 @@ Firefox addon that injects links on goodread pages, that link to searches on [An
 - [ ] remove the `(Hardback)`, `(Paperback)`, etc. extensions for some books in the search query
 - [ ] replace logo with higher quality one
 - [ ] increase margin between text and logo
+- [ ] implement support for userscripts:
+- [ ] userscript header (should be ignored by add-ons)
+- [ ] possibility to use imgur link if `browser.runtime.getURL` doesn't work
