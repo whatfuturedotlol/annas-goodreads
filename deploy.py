@@ -3,7 +3,7 @@ from zipfile import ZipFile
 
 F_USERSCRIPT_HEADER0 = "userscript_header.js"
 INLINE_VAR_REGEX = re.compile('"(CONFIG|MANIFEST):(\w+)"')
-ZIPFILE0 = "annas-archive_v{}.zip"
+ZIPFILE0 = "annas-goodreads_v{}.zip"
 
 def deploy_addon(manifest):
     version = manifest["version"]
