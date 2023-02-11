@@ -1,6 +1,6 @@
 Add-on that injects links on goodread pages, that link to searches on [Anna's Archive](https://annas-archive.org/) for the corresponding books.
 
-This can either be installed as an [add-on](https://addons.mozilla.org/en-US/firefox/addon/annas-goodreads/) on Firefox or as an [userscript](https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas_goodreads.js).
+This can either be installed as an [add-on](https://addons.mozilla.org/en-US/firefox/addon/annas-goodreads/) on Firefox or as an [userscript](https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas_goodreads.user.js).
 
 ### ToDo list
 - [ ] only test for new books after scrolling: test 1s, 2s, 5s, 10s, and 15s after scrolling, then give up

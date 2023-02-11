@@ -1,3 +1,18 @@
+// ==UserScript==
+// @name	Anna's Archive + goodreads
+// @namespace	https://github.com/JonDerThan/
+// @version	0.2.1
+// @description Allows for quick searching of goodread books in Anna's Archive
+// @match	https://www.goodreads.com/*
+// @iconURL	https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png
+// @source	https://github.com/JonDerThan/annas-goodreads
+// ==/UserScript==
+
+"use strict"
+
+const IS_USERSCRIPT = true
+const ICON_URL = "https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png"
+
 "use strict"
 
 const BASE_URL = "annas-archive.org"
