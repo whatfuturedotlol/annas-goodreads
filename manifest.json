@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Anna's Archive + goodreads",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Allows for quick searching of goodread books in Anna's Archive",
 
   "icons": {

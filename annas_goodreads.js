@@ -1,13 +1,30 @@
+// ==UserScript==
+// @name	Anna's Archive + goodreads
+// @namespace	http://tampermonkey.net/
+// @version	0.2.0
+// @description Allows for quick searching of goodread books in Anna's Archive
+// @match	https://www.goodreads.com/*
+// @iconURL	https://annas-archive.org/favicon-16x16.png
+// @source	https://github.com/JonDerThan/annas-goodreads
+// ==/UserScript==
+
 "use strict"
 
-function getBaseURL(lang = "", content = "book_any", filetype = "epub", sort = "") {
-  return `https://annas-archive.org/search?lang=${lang}&content=${content}&ext=${filetype}&sort=${sort}&q=`
-}
-const BASE_URL = getBaseURL()
-const URL_REGEX = /annas-archive\.org/
+const IS_USERSCRIPT = typeof browser === "undefined"
+const BASE_URL = "annas-archive.org"
+const FALLBACK_ICON_URL = "https://annas-archive.org/favicon-16x16.png"
 
+const URL_REGEX = new RegExp(BASE_URL.replace(".", "\\."))
 const BOOK_HREF_REGEX = /\/book\/show\/[^#]+$/
 const DONT_MATCH = /Continue reading/
+
+function getURL(search, lang = "", content = "book_any", filetype = "epub", sort = "") {
+  return `https://${BASE_URL}/search?lang=${lang}&content=${content}&ext=${filetype}&sort=${sort}&q=${search}`
+}
+
+function getIconURL() {
+	return IS_USERSCRIPT ? FALLBACK_ICON_URL : browser.runtime.getURL("annas-archive-favicon.png")
+}
 
 function findBookElems() {
   let bookElems = []
@@ -40,12 +57,11 @@ function findBookElems() {
 
 function createLink(searchStr) {
   // create img
-  const imgURL = browser.runtime.getURL("annas-archive-favicon.png")
   let img = document.createElement("img")
-  img.setAttribute("src", imgURL)
+  img.setAttribute("src", getIconURL())
 
   // create a
-  const url = BASE_URL + searchStr
+  const url = getURL(searchStr)
   let a = document.createElement("a")
   a.setAttribute("href", url)
   a.setAttribute("target", "_blank")
