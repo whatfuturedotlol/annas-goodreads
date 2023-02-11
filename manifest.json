@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Anna's Archive + goodreads",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Allows for quick searching of goodread books in Anna's Archive",
   "homepage_url": "https://github.com/JonDerThan/annas-goodreads",
 

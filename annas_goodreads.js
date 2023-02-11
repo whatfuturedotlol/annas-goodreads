@@ -1,8 +1,8 @@
 "use strict"
 
 const BASE_URL = "annas-archive.org"
-if (!IS_USERSCRIPT) {
-  const ICON_URL = browser.runtime.getURL("annas-archive-favicon.png")
+if (typeof IS_USERSCRIPT === "undefined" || !IS_USERSCRIPT) {
+  var ICON_URL = browser.runtime.getURL("annas-archive-favicon.png")
 }
 
 const URL_REGEX = new RegExp(BASE_URL.replace(".", "\\."))
