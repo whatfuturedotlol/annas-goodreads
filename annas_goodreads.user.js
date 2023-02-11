@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	Anna's Archive + goodreads
 // @namespace	https://github.com/JonDerThan/
-// @version	0.2.2
+// @version	0.2.3
 // @description Allows for quick searching of goodread books in Anna's Archive
 // @match	https://www.goodreads.com/*
 // @iconURL	https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png
@@ -72,6 +72,17 @@ function createLink(searchStr) {
   return a
 }
 
+let pendingChecks = [-1, -1, -1, -1]
+function refreshPendingChecks(func) {
+  // clear out remaining ones:
+  pendingChecks.forEach(clearTimeout)
+  // set new ones
+  pendingChecks[0] = setTimeout(func, 1000)
+  pendingChecks[1] = setTimeout(func, 2000)
+  pendingChecks[2] = setTimeout(func, 3000)
+  pendingChecks[3] = setTimeout(func, 5000)
+}
+
 function injectLinks() {
   let elems = findBookElems()
   elems = elems.filter((elem) => !URL_REGEX.test(elem[1].innerHTML))
@@ -79,8 +90,17 @@ function injectLinks() {
     let a = createLink(encodeURIComponent(elem[0]))
     elem[1].appendChild(a)
   })
+  if (elems.length > 0) pendingChecks.forEach(clearTimeout)
 }
 
 injectLinks()
 // repeat every 10s, if new books appear due to infinite scrolling
-setInterval(injectLinks, 10000)
+// setInterval(injectLinks, 10000)
+
+let lastScroll = 0
+addEventListener("scroll", (e) => {
+  // checked less than .5s ago
+  if (e.timeStamp - lastScroll < 500) return
+  lastScroll = e.timeStamp
+  refreshPendingChecks(injectLinks)
+})
