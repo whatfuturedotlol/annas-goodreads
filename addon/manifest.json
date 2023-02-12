@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "annas-goodreads",
+  "author": "JonDerThan",
+  "version": "0.2.5",
+  "description": "Allows for quick searching of goodread books in Anna's Archive",
+  "homepage_url": "https://github.com/JonDerThan/annas-goodreads",
+
+  "icons": {
+    "16": "annas-archive-favicon.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.goodreads.com/*"],
+      "js": ["annas_goodreads.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    "annas-archive-favicon.png"
+  ]
+}

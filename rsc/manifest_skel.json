@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
 
-  "name": "Anna's Archive + goodreads",
-  "author": "JonDerThan",
-  "version": "0.2.4",
-  "description": "Allows for quick searching of goodread books in Anna's Archive",
-  "homepage_url": "https://github.com/JonDerThan/annas-goodreads",
+  "name": "PACKAGE:name",
+  "author": "PACKAGE:author",
+  "version": "PACKAGE:version",
+  "description": "PACKAGE:description",
+  "homepage_url": "PACKAGE:homepage",
 
   "icons": {
     "16": "annas-archive-favicon.png"

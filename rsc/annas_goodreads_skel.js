@@ -1,22 +1,10 @@
-// ==UserScript==
-// @name            annas-goodreads
-// @author          JonDerThan
-// @namespace       https://github.com/JonDerThan/
-// @version         0.2.5
-// @description     Allows for quick searching of goodread books in Anna's Archive
-// @match           https://www.goodreads.com/*
-// @iconURL         https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png
-// @source          https://github.com/JonDerThan/annas-goodreads,
-//
-// ==/UserScript==
-
+"USERSCRIPT:header"
 "use strict"
 
 let ICON_URL
 
-
-ICON_URL = "https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png"
-
+"USERSCRIPT:definitions"
+"ADDON:definitions"
 
 const BASE_URL = "annas-archive.org"
 const URL_REGEX = new RegExp(BASE_URL.replace(".", "\\."))
