@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	Anna's Archive + goodreads
 // @namespace	https://github.com/JonDerThan/
-// @version	0.2.3
+// @version	0.2.4
 // @description Allows for quick searching of goodread books in Anna's Archive
 // @match	https://www.goodreads.com/*
 // @iconURL	https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png
@@ -67,6 +67,7 @@ function createLink(searchStr) {
   let a = document.createElement("a")
   a.setAttribute("href", url)
   a.setAttribute("target", "_blank")
+  a.style.setProperty("margin", ".25em")
   a.appendChild(img)
 
   return a

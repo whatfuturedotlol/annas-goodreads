@@ -52,6 +52,7 @@ function createLink(searchStr) {
   let a = document.createElement("a")
   a.setAttribute("href", url)
   a.setAttribute("target", "_blank")
+  a.style.setProperty("margin", ".25em")
   a.appendChild(img)
 
   return a
