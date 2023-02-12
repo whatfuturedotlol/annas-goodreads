@@ -1,10 +1,17 @@
 "use strict"
 
-const BASE_URL = "annas-archive.org"
-if (typeof IS_USERSCRIPT === "undefined" || !IS_USERSCRIPT) {
-  var ICON_URL = browser.runtime.getURL("annas-archive-favicon.png")
-}
+// START USERSCRIPT SUPPORT
+let IS_USERSCRIPT = false
+let ICON_URL
 
+"USERSCRIPT_HEADER_HERE"
+
+if (!IS_USERSCRIPT) {
+  ICON_URL = browser.runtime.getURL("annas-archive-favicon.png")
+}
+// END  USERSCRIPT SUPPORT
+
+const BASE_URL = "annas-archive.org"
 const URL_REGEX = new RegExp(BASE_URL.replace(".", "\\."))
 const BOOK_HREF_REGEX = /\/book\/show\/[^#]+$/
 const DONT_MATCH = /Continue reading/

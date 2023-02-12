@@ -1,25 +1,29 @@
 // ==UserScript==
-// @name	Anna's Archive + goodreads
-// @namespace	https://github.com/JonDerThan/
-// @version	0.2.4
-// @description Allows for quick searching of goodread books in Anna's Archive
-// @match	https://www.goodreads.com/*
-// @iconURL	https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png
-// @source	https://github.com/JonDerThan/annas-goodreads
+// @name            Anna's Archive + goodreads
+// @author          JonDerThan
+// @namespace       https://github.com/JonDerThan/
+// @version         0.2.4
+// @description     Allows for quick searching of goodread books in Anna's Archive
+// @match           https://www.goodreads.com/*
+// @iconURL         https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png
+// @source          https://github.com/JonDerThan/annas-goodreads
 // ==/UserScript==
 
 "use strict"
 
-const IS_USERSCRIPT = true
-const ICON_URL = "https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png"
+// START USERSCRIPT SUPPORT
+let IS_USERSCRIPT = false
+let ICON_URL
 
-"use strict"
+IS_USERSCRIPT = true
+ICON_URL = "https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png"
+
+if (!IS_USERSCRIPT) {
+  ICON_URL = browser.runtime.getURL("annas-archive-favicon.png")
+}
+// END  USERSCRIPT SUPPORT
 
 const BASE_URL = "annas-archive.org"
-if (typeof IS_USERSCRIPT === "undefined" || !IS_USERSCRIPT) {
-  var ICON_URL = browser.runtime.getURL("annas-archive-favicon.png")
-}
-
 const URL_REGEX = new RegExp(BASE_URL.replace(".", "\\."))
 const BOOK_HREF_REGEX = /\/book\/show\/[^#]+$/
 const DONT_MATCH = /Continue reading/

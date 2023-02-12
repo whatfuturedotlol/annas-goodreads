@@ -1,0 +1,39 @@
+{
+  "env": {
+      "browser": true,
+      "es2021": true,
+      "webextensions": true
+  },
+  "extends": "eslint:recommended",
+  "overrides": [
+      {
+        "files": ["userscript_header.js"],
+        "rules": {
+            "no-unused-vars": "off",
+            "no-undef": "off"
+        }
+      }
+  ],
+  "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+  },
+  "rules": {
+      "indent": [
+          "error",
+          2
+      ],
+      "linebreak-style": [
+          "error",
+          "unix"
+      ],
+      "quotes": [
+          "error",
+          "double"
+      ],
+      "semi": [
+          "error",
+          "never"
+      ]
+  }
+}
