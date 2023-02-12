@@ -7,6 +7,7 @@ const JS_SKEL0 = "./rsc/annas_goodreads_skel.js"
 const MANIFEST_SKEL0 = "./rsc/manifest_skel.json"
 const ADDON_HEADER0 = "./rsc/addon_header.js"
 const USERSCRIPT_HEADER0 = "./rsc/userscript_header.js"
+const ICON0 = "./addon/annas-archive-favicon.png"
 
 // filenames: out
 const USERSCRIPT0 = "./annas_goodreads.user.js"
@@ -51,6 +52,10 @@ function resolveAllVars(skel, config, quotes = false) {
   return skel
 }
 
+function strippedFileName(path) {
+  return path.match(/[^\/]+\.[^\/]+$/gm)[0]
+}
+
 function main() {
   let manifest = require(MANIFEST_SKEL0)
   const packagejson = require(PACKAGE0)
@@ -77,10 +82,24 @@ function main() {
   let addon = generateAddon(jsSkel, config)
   let userscript = generateUserscript(jsSkel, config)
 
+  // save files
   fs.writeFileSync(ADDON_JS0, addon)
   fs.writeFileSync(MANIFEST0, manifest)
   fs.writeFileSync(USERSCRIPT0, userscript)
-  // TODO: generate archive
+
+  // generate zip archive
+  let zip = new JSZip()
+    .file(strippedFileName(MANIFEST0), manifest)
+    .file(strippedFileName(ADDON_JS0), addon)
+    .file(strippedFileName(ICON0), fs.readFileSync(ICON0))
+
+  // save zip archive
+  const archive0 = ARCHIVE0.replace("{}", config.package.version)
+  zip.generateNodeStream({ type: "nodebuffer", streamFiles: true })
+    .pipe(fs.createWriteStream(archive0))
+    .on("finish", () => {
+      console.log("Created archive: " + archive0)
+    })
 }
 
 if (require.main === module) 
