@@ -9,7 +9,6 @@
 // @source          "MANIFEST:homepage_url"
 // ==/UserScript==
 
-"SPLIT_HERE"
-
+"SPLIT"
 IS_USERSCRIPT = true
 ICON_URL = "https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png"

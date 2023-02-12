@@ -1,15 +1,11 @@
+"USERSCRIPT:header"
 "use strict"
 
-// START USERSCRIPT SUPPORT
-let IS_USERSCRIPT = false
-let ICON_URL
+const ICON_URL
+const IS_USERSCRIPT
 
-"USERSCRIPT_HEADER_HERE"
-
-if (!IS_USERSCRIPT) {
-  ICON_URL = browser.runtime.getURL("annas-archive-favicon.png")
-}
-// END  USERSCRIPT SUPPORT
+"USERSCRIPT:definitions"
+"ADDON:definitions"
 
 const BASE_URL = "annas-archive.org"
 const URL_REGEX = new RegExp(BASE_URL.replace(".", "\\."))
