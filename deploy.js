@@ -7,12 +7,11 @@ const JS_SKEL0 = "./rsc/annas_goodreads_skel.js"
 const MANIFEST_SKEL0 = "./rsc/manifest_skel.json"
 const ADDON_HEADER0 = "./rsc/addon_header.js"
 const USERSCRIPT_HEADER0 = "./rsc/userscript_header.js"
-const ICON0 = "./rsc/annas-archive-favicon.png"
 
 // filenames: out
 const USERSCRIPT0 = "./annas_goodreads.user.js"
-const ADDON_JS0 = "./.tmp/annas_goodreads.js"
-const MANIFEST0 = "./.tmp/manifest.json"
+const ADDON_JS0 = "./addon/annas_goodreads.js"
+const MANIFEST0 = "./addon/manifest.json"
 const ARCHIVE0 = "annas-goodreads_v{}.zip"
 
 const INLINE_VAR_REGEX = /"([A-Z]+):(\w+)"/g
@@ -23,7 +22,7 @@ function generateAddon(skel, config) {
 }
 
 function generateManifest(skel, config) {
-  return resolveAllVars(skel, config)
+  return resolveAllVars(skel, config, true)
 }
 
 function parseUserscriptHeader(skel, config) {
@@ -42,10 +41,11 @@ function resolveVar(match, config) {
   return config[namespace.toLowerCase()][variable]
 }
 
-function resolveAllVars(skel, config) {
+function resolveAllVars(skel, config, quotes = false) {
   const matches = [...skel.matchAll(INLINE_VAR_REGEX)] 
   matches.forEach(match => {
     let result = resolveVar(match, config)
+    if (quotes) result = "\"" + result + "\""
     skel = skel.replace(match[0], result)
   })
   return skel
@@ -77,7 +77,9 @@ function main() {
   let addon = generateAddon(jsSkel, config)
   let userscript = generateUserscript(jsSkel, config)
 
-  // TODO: save files
+  fs.writeFileSync(ADDON_JS0, addon)
+  fs.writeFileSync(MANIFEST0, manifest)
+  fs.writeFileSync(USERSCRIPT0, userscript)
   // TODO: generate archive
 }
 

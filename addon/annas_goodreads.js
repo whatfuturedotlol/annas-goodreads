@@ -1,21 +1,8 @@
-// ==UserScript==
-// @name            annas-goodreads
-// @author          JonDerThan
-// @namespace       https://github.com/JonDerThan/
-// @version         0.2.4
-// @description     Allows for quick searching of goodread books in Anna's Archive
-// @match           https://www.goodreads.com/*
-// @iconURL         https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png
-// @source          https://github.com/JonDerThan/annas-goodreads,
-//
-// ==/UserScript==
-
 "use strict"
 
 let ICON_URL
 
-
-ICON_URL = "https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png"
+ICON_URL = browser.runtime.getURL("annas-archive-favicon.png")
 
 
 const BASE_URL = "annas-archive.org"
