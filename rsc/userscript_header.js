@@ -1,14 +1,13 @@
 // ==UserScript==
-// @name            "MANIFEST:name"
-// @author          "MANIFEST:author"
+// @name            "PACKAGE:name"
+// @author          "PACKAGE:author"
 // @namespace       https://github.com/JonDerThan/
-// @version         "MANIFEST:version"
-// @description     "MANIFEST:description"
-// @match           "CONFIG:match"
+// @version         "PACKAGE:version"
+// @description     "PACKAGE:description"
+// @match           "GLOBAL:match"
 // @iconURL         https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png
-// @source          "MANIFEST:homepage_url"
+// @source          "PACKAGE:homepage",
+//
 // ==/UserScript==
-
 "SPLIT"
-IS_USERSCRIPT = true
 ICON_URL = "https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png"

@@ -7,11 +7,18 @@
   "extends": "eslint:recommended",
   "overrides": [
       {
-        "files": ["userscript_header.js"],
+        "files": [
+            "rsc/userscript_header.js",
+            "rsc/addon_header.js"
+        ],
         "rules": {
             "no-unused-vars": "off",
             "no-undef": "off"
         }
+      },
+      {
+        "files": [ "deploy.js" ],
+        "env": { "node": true, "webextensions": false }
       }
   ],
   "parserOptions": {
@@ -34,6 +41,7 @@
       "semi": [
           "error",
           "never"
-      ]
+      ],
+      "no-unused-vars": [ "warn" ]
   }
 }

@@ -3,7 +3,8 @@
   "version": "0.2.4",
   "description": "Allows for quick searching of goodread books in Anna's Archive",
   "devDependencies": {
-    "eslint": "^8.34.0"
+    "eslint": "^8.34.0",
+    "jszip": "^3.10.1"
   },
   "scripts": {
     "test": "npx eslint .",

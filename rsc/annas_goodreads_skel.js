@@ -1,8 +1,7 @@
 "USERSCRIPT:header"
 "use strict"
 
-const ICON_URL
-const IS_USERSCRIPT
+let ICON_URL
 
 "USERSCRIPT:definitions"
 "ADDON:definitions"
