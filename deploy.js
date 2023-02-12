@@ -17,31 +17,38 @@ const ARCHIVE0 = "annas-goodreads_v{}.zip"
 
 const INLINE_VAR_REGEX = /"([A-Z]+):(\w+)"/g
 
+// generates the addon text
 function generateAddon(skel, config) {
   skel = skel.replace(/"USERSCRIPT:\w+"\n/g, "")
   return resolveAllVars(skel, config)
 }
 
+// generates the manifest text
 function generateManifest(skel, config) {
   return resolveAllVars(skel, config, true)
 }
 
+// resolves inline vars in the userscript headers and seperates
+// actual headers from definitions
 function parseUserscriptHeader(skel, config) {
   let resolvedVars = resolveAllVars(skel, config)
   return resolvedVars.split("\"SPLIT\"")
 }
 
+// generates the userscript text
 function generateUserscript(skel, config) {
   skel = skel.replace(/"ADDON:\w+"\n/g, "")
   return resolveAllVars(skel, config)
 }
 
+// resolves a single variable
 function resolveVar(match, config) {
   let namespace = match[1]
   let variable = match[2]
   return config[namespace.toLowerCase()][variable]
 }
 
+// resolves every variable and replaces their occurences in skel
 function resolveAllVars(skel, config, quotes = false) {
   const matches = [...skel.matchAll(INLINE_VAR_REGEX)] 
   matches.forEach(match => {
@@ -52,11 +59,13 @@ function resolveAllVars(skel, config, quotes = false) {
   return skel
 }
 
+// ./path/to/file.js -> file.js
 function strippedFileName(path) {
-  return path.match(/[^\/]+\.[^\/]+$/gm)[0]
+  return path.match(/[^/]+\.[^/]+$/gm)[0]
 }
 
 function main() {
+  console.log("Generating files...")
   let manifest = require(MANIFEST_SKEL0)
   const packagejson = require(PACKAGE0)
 
@@ -83,8 +92,11 @@ function main() {
   let userscript = generateUserscript(jsSkel, config)
 
   // save files
+  console.log("Saving file: " + ADDON_JS0)
   fs.writeFileSync(ADDON_JS0, addon)
+  console.log("Saving file: " + MANIFEST0)
   fs.writeFileSync(MANIFEST0, manifest)
+  console.log("Saving file: " + USERSCRIPT0)
   fs.writeFileSync(USERSCRIPT0, userscript)
 
   // generate zip archive
@@ -99,7 +111,9 @@ function main() {
     .pipe(fs.createWriteStream(archive0))
     .on("finish", () => {
       console.log("Created archive: " + archive0)
+      console.log("Deployed version " + config.package.version + " sucessfully!")
     })
+
 }
 
 if (require.main === module) 
