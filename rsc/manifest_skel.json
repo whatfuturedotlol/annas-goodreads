@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "PACKAGE:name",
+  "name": "CONFIG:longName",
   "author": "PACKAGE:author",
   "version": "PACKAGE:version",
   "description": "PACKAGE:description",
@@ -13,7 +13,7 @@
 
   "content_scripts": [
     {
-      "matches": ["https://www.goodreads.com/*"],
+      "matches": ["CONFIG:match"],
       "js": ["annas_goodreads.js"]
     }
   ],

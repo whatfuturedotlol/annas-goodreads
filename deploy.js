@@ -76,7 +76,7 @@ function main() {
 
   let config = {
     package: packagejson,
-    global: { match: manifest["content_scripts"][0]["matches"][0] },
+    config: packagejson.config,
     addon: { definitions: addonHeader }
   }
 

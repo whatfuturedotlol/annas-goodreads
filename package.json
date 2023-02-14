@@ -1,7 +1,11 @@
 {
   "name": "annas-goodreads",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Allows for quick searching of goodread books in Anna's Archive",
+  "config": {
+    "longName": "Anna's Archive + goodreads",
+    "match": "https://www.goodreads.com/*"
+  },
   "devDependencies": {
     "eslint": "^8.34.0",
     "jszip": "^3.10.1"

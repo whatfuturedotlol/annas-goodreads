@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name            annas-goodreads
+// @name            Anna's Archive + goodreads
 // @author          JonDerThan
 // @namespace       https://github.com/JonDerThan/
-// @version         0.2.5
+// @version         0.2.6
 // @description     Allows for quick searching of goodread books in Anna's Archive
 // @match           https://www.goodreads.com/*
 // @iconURL         https://raw.githubusercontent.com/JonDerThan/annas-goodreads/main/annas-archive-favicon.png
